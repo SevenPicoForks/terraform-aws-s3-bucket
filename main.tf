@@ -61,7 +61,7 @@ resource "aws_s3_bucket_versioning" "default" {
 }
 
 resource "aws_s3_bucket_logging" "default" {
-  count  = local.enabled && var.logging != null ? 1 : 0
+  count  = local.enabled && length(var.logging) > 0 ? 1 : 0
   bucket = join("", aws_s3_bucket.default.*.id)
 
   target_bucket = var.logging["bucket_name"]

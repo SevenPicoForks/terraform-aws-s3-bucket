@@ -55,7 +55,7 @@ variable "logging" {
     bucket_name = string
     prefix      = string
   })
-  default     = null
+  default     = {}
   description = "Bucket access logging configuration."
 }
 
