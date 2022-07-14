@@ -51,10 +51,10 @@ variable "versioning_enabled" {
 }
 
 variable "logging" {
-  type = object({
-    bucket_name = string
-    prefix      = string
-  })
+  type = any //object({
+    //bucket_name = string
+    //prefix      = string
+  //})
   default     = {}
   description = "Bucket access logging configuration."
 }
