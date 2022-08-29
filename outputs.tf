@@ -9,7 +9,7 @@ output "bucket_regional_domain_name" {
 }
 
 output "bucket_id" {
-  value       = local.enabled ? join("", aws_s3_bucket.default.*.id) : ""
+  value       = local.bucket_name
   description = "Bucket Name (aka ID)"
 }
 

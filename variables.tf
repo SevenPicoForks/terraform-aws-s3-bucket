@@ -32,7 +32,7 @@ variable "source_policy_documents" {
     EOT
 }
 locals {
-  source_policy_documents = compact(concat([var.policy], var.source_policy_documents))
+  source_policy_documents = compact(var.source_policy_documents)
 }
 
 variable "force_destroy" {
@@ -52,8 +52,8 @@ variable "versioning_enabled" {
 
 variable "logging" {
   type = any //object({
-    //bucket_name = string
-    //prefix      = string
+  //bucket_name = string
+  //prefix      = string
   //})
   default     = {}
   description = "Bucket access logging configuration."
@@ -249,7 +249,7 @@ variable "s3_replication_rules" {
 locals {
   # Deprecate `replication_rules` in favor of `s3_replication_rules` to keep all the replication related
   # inputs grouped under s3_replica[tion]
-  s3_replication_rules = var.replication_rules == null ? var.s3_replication_rules : var.replication_rules
+  s3_replication_rules = var.s3_replication_rules
 }
 
 variable "s3_replication_source_roles" {

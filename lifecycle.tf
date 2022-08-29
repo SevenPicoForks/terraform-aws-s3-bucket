@@ -85,72 +85,7 @@ locals {
     ]
   }]
 
-  # Backwards compatibility: translate old `lifecycle_rules` variable to new format
-  lifecycle_rules = var.lifecycle_rules == null ? [] : var.lifecycle_rules
-  normalized_lifecycle_rules = [for i, rule in local.lifecycle_rules : {
-    enabled = rule.enabled
-    id      = try(var.lifecycle_rule_ids[i], "rule-${i + 1}")
-
-    abort_incomplete_multipart_upload_days = rule.abort_incomplete_multipart_upload_days # number
-
-    filter_prefix_only = try(length(rule.prefix), 0) > 0 && try(length(rule.tags), 0) == 0 ? rule.prefix : null
-    filter_and = try(length(rule.tags), 0) == 0 ? null : {
-      object_size_greater_than = null                                   # integer >= 0
-      object_size_less_than    = null                                   # integer >= 1
-      prefix                   = rule.prefix == "" ? null : rule.prefix # string
-      tags                     = rule.tags == null ? {} : rule.tags     # map(string)
-    }
-    # We use "!= true" because it covers !null as well as !false, and allows the "null" option to be on the same line.
-    expiration = rule.enable_current_object_expiration != true ? null : {
-      date                         = null                 # string
-      days                         = rule.expiration_days # integer > 0
-      expired_object_delete_marker = null                 # bool
-    }
-    noncurrent_version_expiration = rule.enable_noncurrent_version_expiration != true ? null : {
-      newer_noncurrent_versions = null                                    # integer > 0
-      noncurrent_days           = rule.noncurrent_version_expiration_days # integer >= 0
-    }
-    transition = concat(
-      rule.enable_standard_ia_transition != true ? [] :
-      [{
-        date          = null                          # string
-        days          = rule.standard_transition_days # integer >= 0
-        storage_class = "STANDARD_IA"
-      }],
-      rule.enable_glacier_transition != true ? [] :
-      [{
-        date          = null                         # string
-        days          = rule.glacier_transition_days # integer >= 0
-        storage_class = "GLACIER"
-      }],
-      rule.enable_deeparchive_transition != true ? [] :
-      [{
-        date          = null                             # string
-        days          = rule.deeparchive_transition_days # integer >= 0
-        storage_class = "DEEP_ARCHIVE"
-      }],
-    )
-    noncurrent_version_transition = concat(
-      # In the old `lifecycle_rules` variable, `enable_glacier_transition`
-      # enabled the transition for both current and non-current version.
-      rule.enable_glacier_transition != true ? [] :
-      [{
-        newer_noncurrent_versions = null                                            # integer >= 0
-        noncurrent_days           = rule.noncurrent_version_glacier_transition_days # integer >= 0
-        storage_class             = "GLACIER"
-      }],
-      # In the old `lifecycle_rules` variable, `enable_deeparchive_transition`
-      # enabled the transition for both current and non-current version.
-      rule.enable_deeparchive_transition != true ? [] :
-      [{
-        newer_noncurrent_versions = null                                                # integer >= 0
-        noncurrent_days           = rule.noncurrent_version_deeparchive_transition_days # integer >= 0
-        storage_class             = "DEEP_ARCHIVE"
-      }],
-    )
-  }]
-
-  lc_rules = concat(local.normalized_lifecycle_rules, local.normalized_lifecycle_configuration_rules)
+  lc_rules = local.normalized_lifecycle_configuration_rules
 }
 
 
