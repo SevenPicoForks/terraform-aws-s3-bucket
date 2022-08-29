@@ -1,5 +1,5 @@
 locals {
-  enabled   = module.this.enabled
+  enabled   = module.context.enabled
   partition = join("", data.aws_partition.current.*.partition)
 
   object_lock_enabled           = local.enabled && var.object_lock_configuration != null
@@ -7,7 +7,7 @@ locals {
   versioning_enabled            = local.enabled && var.versioning_enabled
   transfer_acceleration_enabled = local.enabled && var.transfer_acceleration_enabled
 
-  bucket_name = var.bucket_name != null && var.bucket_name != "" ? var.bucket_name : module.this.id
+  bucket_name = var.bucket_name != null && var.bucket_name != "" ? var.bucket_name : module.context.id
   bucket_arn  = "arn:${local.partition}:s3:::${join("", aws_s3_bucket.default.*.id)}"
 
   public_access_block_enabled = var.block_public_acls || var.block_public_policy || var.ignore_public_acls || var.restrict_public_buckets
@@ -41,7 +41,7 @@ resource "aws_s3_bucket" "default" {
 
   object_lock_enabled = local.object_lock_enabled
 
-  tags = module.this.tags
+  tags = module.context.tags
 }
 
 resource "aws_s3_bucket_accelerate_configuration" "default" {
@@ -307,7 +307,7 @@ module "s3_user" {
   s3_actions   = var.allowed_bucket_actions
   s3_resources = ["${join("", aws_s3_bucket.default.*.arn)}/*", join("", aws_s3_bucket.default.*.arn)]
 
-  context = module.this.context
+  context = module.context.legacy
 }
 
 data "aws_iam_policy_document" "bucket_policy" {
@@ -449,7 +449,7 @@ resource "aws_s3_bucket_policy" "default" {
 # https://www.terraform.io/docs/providers/aws/r/s3_bucket_public_access_block.html
 # for the nuances of the blocking options
 resource "aws_s3_bucket_public_access_block" "default" {
-  count  = module.this.enabled && local.public_access_block_enabled ? 1 : 0
+  count  = module.context.enabled && local.public_access_block_enabled ? 1 : 0
   bucket = join("", aws_s3_bucket.default.*.id)
 
   block_public_acls       = var.block_public_acls
