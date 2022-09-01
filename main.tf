@@ -25,9 +25,6 @@ locals {
   ])
 }
 
-data "aws_partition" "current" { count = local.enabled ? 1 : 0 }
-data "aws_canonical_user_id" "default" { count = local.enabled ? 1 : 0 }
-
 resource "aws_s3_bucket" "default" {
   #bridgecrew:skip=BC_AWS_S3_13:Skipping `Enable S3 Bucket Logging` because we do not have good defaults
   #bridgecrew:skip=CKV_AWS_52:Skipping `Ensure S3 bucket has MFA delete enabled` due to issue in terraform (https://github.com/hashicorp/terraform-provider-aws/issues/629).
@@ -60,12 +57,19 @@ resource "aws_s3_bucket_versioning" "default" {
   }
 }
 
+locals {
+  default_logging_prefix = join("/", [
+    data.aws_caller_identity.current[0].account_id,
+    module.context.id
+  ])
+}
+
 resource "aws_s3_bucket_logging" "default" {
-  count  = local.enabled && length(var.logging) > 0 ? 1 : 0
+  count  = (local.enabled && var.logging != null) ? 1 : 0
   bucket = join("", aws_s3_bucket.default.*.id)
 
   target_bucket = var.logging["bucket_name"]
-  target_prefix = var.logging["prefix"]
+  target_prefix = can(var.logging["prefix"]) ? var.logging["prefix"] : local.default_logging_prefix
 }
 
 # https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html
