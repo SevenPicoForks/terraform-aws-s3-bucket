@@ -69,7 +69,7 @@ resource "aws_s3_bucket_logging" "default" {
   bucket = join("", aws_s3_bucket.default.*.id)
 
   target_bucket = var.logging["bucket_name"]
-  target_prefix = can(var.logging["prefix"]) ? var.logging["prefix"] : local.default_logging_prefix
+  target_prefix = (var.logging["prefix"] != null) ? var.logging["prefix"] : local.default_logging_prefix
 }
 
 # https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html
