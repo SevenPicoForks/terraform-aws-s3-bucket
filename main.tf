@@ -58,10 +58,10 @@ resource "aws_s3_bucket_versioning" "default" {
 }
 
 locals {
-  default_logging_prefix = join("/", [
-    data.aws_caller_identity.current[0].account_id,
+  default_logging_prefix = join("/", compact([
+    try(data.aws_caller_identity.current[0].account_id, ""),
     module.context.id
-  ])
+  ]))
 }
 
 resource "aws_s3_bucket_logging" "default" {
