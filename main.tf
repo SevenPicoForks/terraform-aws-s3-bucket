@@ -60,7 +60,7 @@ resource "aws_s3_bucket_versioning" "default" {
 locals {
   default_logging_prefix = join("/", compact([
     try(data.aws_caller_identity.current[0].account_id, ""),
-    module.context.id
+    "${module.context.id}/"
   ]))
 }
 
