@@ -477,6 +477,6 @@ resource "aws_s3_bucket_ownership_controls" "default" {
 resource "time_sleep" "wait_for_aws_s3_bucket_settings" {
   count            = local.enabled ? 1 : 0
   depends_on       = [aws_s3_bucket_public_access_block.default, aws_s3_bucket_policy.default]
-  create_duration  = "30s"
-  destroy_duration = "30s"
+  create_duration  = "${var.wait_time_seconds}s"
+  destroy_duration = "${var.wait_time_seconds}s"
 }

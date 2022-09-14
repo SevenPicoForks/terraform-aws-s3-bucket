@@ -328,3 +328,8 @@ variable "bucket_key_enabled" {
   For more information, see: https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html
   EOT
 }
+
+variable "wait_time_seconds" {
+  type    = number
+  default = 45
+}
