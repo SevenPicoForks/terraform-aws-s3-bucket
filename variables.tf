@@ -333,3 +333,9 @@ variable "wait_time_seconds" {
   type    = number
   default = 45
 }
+
+variable "s3_enable_mfa_delete" {
+  type = string
+  default = "Disabled"
+  description = "Valid values are `Enabled` and `Disabled`"
+}

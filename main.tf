@@ -480,3 +480,12 @@ resource "time_sleep" "wait_for_aws_s3_bucket_settings" {
   create_duration  = "${var.wait_time_seconds}s"
   destroy_duration = "${var.wait_time_seconds}s"
 }
+
+# S3 MFA delete
+resource "aws_s3_bucket_versioning" "default" {
+  count  = local.enabled ? 1 : 0
+  bucket = join("", aws_s3_bucket.default.*.id)
+  versioning_configuration {
+    status = var.s3_enable_mfa_delete
+  }
+}
