@@ -335,7 +335,7 @@ variable "wait_time_seconds" {
 }
 
 variable "s3_enable_mfa_delete" {
-  type = string
-  default = "Disabled"
-  description = "Valid values are `Enabled` and `Disabled`"
+  type = bool
+  default = false
+  description = "Set this to true to use Amazon S3 Bucket MFA delete"
 }
