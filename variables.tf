@@ -334,8 +334,8 @@ variable "wait_time_seconds" {
   default = 45
 }
 
-variable "s3_enable_mfa_delete" {
+variable "enable_mfa_delete" {
   type = bool
   default = false
-  description = "Set this to true to use Amazon S3 Bucket MFA delete"
+  description = "Note that it only applies when Versioning is enabled"
 }
