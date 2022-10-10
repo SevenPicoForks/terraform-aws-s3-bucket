@@ -333,3 +333,9 @@ variable "wait_time_seconds" {
   type    = number
   default = 45
 }
+
+variable "enable_mfa_delete" {
+  type = bool
+  default = false
+  description = "Note that it only applies when Versioning is enabled"
+}
