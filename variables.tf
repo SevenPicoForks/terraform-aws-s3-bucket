@@ -337,5 +337,5 @@ variable "wait_time_seconds" {
 variable "enable_mfa_delete" {
   type = bool
   default = false
-  description = "Set this to true to enable MFA on bucket. You must also set `versioning_enabled` to `true`"
+  description = "Set this to true to enable MFA on bucket. You must also set `versioning_enabled` to `true`."
 }
