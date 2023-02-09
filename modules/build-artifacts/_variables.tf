@@ -1,3 +1,8 @@
+variable "attributes_override" {
+  type = list(string)
+  default = []
+}
+
 variable "create_kms_key" {
   type = bool
   default = false
