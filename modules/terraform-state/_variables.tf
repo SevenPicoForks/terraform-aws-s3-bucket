@@ -1,6 +1,6 @@
 variable "attributes_override" {
   type = list(string)
-  default = []
+  default = null
 }
 
 variable "bucket_name" {

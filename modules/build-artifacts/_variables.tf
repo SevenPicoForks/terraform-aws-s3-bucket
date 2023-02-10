@@ -1,6 +1,6 @@
 variable "attributes_override" {
   type = list(string)
-  default = []
+  default = null
 }
 
 variable "create_kms_key" {
