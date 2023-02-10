@@ -46,7 +46,7 @@ module "build_artifacts" {
   block_public_policy           = true
   bucket_key_enabled            = false
   bucket_name                   = ""
-  cors_rule_inputs              = []
+  cors_rule_inputs              = null
   enable_mfa_delete             = var.enable_mfa_delete
   force_destroy                 = var.force_destroy
   ignore_public_acls            = true
