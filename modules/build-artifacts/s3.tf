@@ -5,7 +5,7 @@ module "build_artifacts_context" {
   source     = "app.terraform.io/SevenPico/context/null"
   version    = "1.1.0"
   context    = module.context.self
-  attributes = length(var.attributes_override) == null ? ["artifacts"] : var.attributes_override
+  attributes = var.attributes_override == null ? ["artifacts"] : var.attributes_override
 }
 
 
