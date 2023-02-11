@@ -2,8 +2,8 @@
 # TFState Storage Context
 # ------------------------------------------------------------------------------
 module "tfstate_storage_context" {
-  source     = "app.terraform.io/SevenPico/context/null"
-  version    = "1.1.0"
+  source     = "SevenPico/context/null"
+  version    = "2.0.0"
   context    = module.context.self
   attributes = var.attributes_override == null ? ["tfstate"] : var.attributes_override
 }
