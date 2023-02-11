@@ -67,7 +67,7 @@ data "aws_iam_policy_document" "kms_key" {
 # KMS Key
 # ------------------------------------------------------------------------------
 module "kms_key" {
-  source  = "SevenPico/kms-key/aws"
+  source  = "SevenPicoForks/kms-key/aws"
   version = "2.0.0"
   context = module.kms_key_context.self
 
