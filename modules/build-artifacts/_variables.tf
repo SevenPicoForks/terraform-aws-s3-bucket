@@ -55,11 +55,11 @@ variable "s3_source_policy_documents" {
     EOT
 }
 
-variable "source_accounts" {
-  type = list(string)
-  default = []
-  description = "List of Account IDs allowed to write to this log bucket."
-}
+#variable "source_accounts" {
+#  type = list(string)
+#  default = []
+#  description = "List of Account IDs allowed to write to this log bucket."
+#}
 
 variable "s3_replication_enabled" {
   type        = bool
