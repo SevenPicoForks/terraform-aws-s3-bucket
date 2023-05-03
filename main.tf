@@ -150,8 +150,7 @@ resource "aws_s3_bucket_acl" "default" {
   bucket = join("", aws_s3_bucket.default.*.id)
 
   # Conflicts with access_control_policy so this is enabled if no grants
-#  acl = try(length(local.acl_grants), 0) == 0 ? var.acl : null
-  acl = null
+  acl = try(length(local.acl_grants), 0) == 0 ? var.acl : null
 
   dynamic "access_control_policy" {
     for_each = try(length(local.acl_grants), 0) == 0 || try(length(var.acl), 0) > 0 ? [] : [1]
