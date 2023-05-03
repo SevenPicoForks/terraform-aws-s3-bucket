@@ -145,38 +145,109 @@ resource "aws_s3_bucket_cors_configuration" "default" {
   }
 }
 ########################################################################################
+#resource "aws_s3_bucket_acl" "default" {
+#  count  = local.enabled ? 1 : 0
+#  bucket = join("", aws_s3_bucket.default.*.id)
+#
+#  # Conflicts with access_control_policy so this is enabled if no grants
+##  acl = try(length(local.acl_grants), 0) == 0 ? var.acl : null
+#  acl = null
+#
+#  dynamic "access_control_policy" {
+#    for_each = try(length(local.acl_grants), 0) == 0 || try(length(var.acl), 0) > 0 ? [] : [1]
+#
+#    content {
+#      dynamic "grant" {
+#        for_each = local.acl_grants
+#
+#        content {
+#          grantee {
+#            id   = grant.value.id
+#            type = grant.value.type
+#            uri  = grant.value.uri
+#          }
+#          #permission = grant.value.permission
+#          permission = "FULL_CONTROL"
+#        }
+#      }
+#
+#      owner {
+#        id = join("", data.aws_canonical_user_id.default.*.id)
+#      }
+#    }
+#  }
+#}
 resource "aws_s3_bucket_acl" "default" {
   count  = local.enabled ? 1 : 0
   bucket = join("", aws_s3_bucket.default.*.id)
 
-  # Conflicts with access_control_policy so this is enabled if no grants
-  acl = try(length(local.acl_grants), 0) == 0 ? var.acl : null
-  #acl = null
-
-  dynamic "access_control_policy" {
+  dynamic "policy" {
     for_each = try(length(local.acl_grants), 0) == 0 || try(length(var.acl), 0) > 0 ? [] : [1]
 
     content {
-      dynamic "grant" {
-        for_each = local.acl_grants
+      statement {
+        effect = "Allow"
 
-        content {
-          grantee {
-            id   = grant.value.id
-            type = grant.value.type
-            uri  = grant.value.uri
+        dynamic "principal" {
+          for_each = local.acl_grants
+
+          content {
+            dynamic "AWS" {
+              for_each = try(principal.value.aws, [])
+              content {
+                type = "AWS"
+                values = [AWS.value]
+              }
+            }
+
+            dynamic "canonical_user" {
+              for_each = try(principal.value.canonical_user, [])
+              content {
+                type = "CanonicalUser"
+                values = [canonical_user.value]
+              }
+            }
+
+            dynamic "email" {
+              for_each = try(principal.value.email, [])
+              content {
+                type = "AmazonCustomerByEmail"
+                values = [email.value]
+              }
+            }
+
+            dynamic "group" {
+              for_each = try(principal.value.group, [])
+              content {
+                type = "Group"
+                values = [group.value]
+              }
+            }
+
+            dynamic "service" {
+              for_each = try(principal.value.service, [])
+              content {
+                type = "Service"
+                values = [service.value]
+              }
+            }
           }
-          #permission = grant.value.permission
-          permission = "FULL_CONTROL"
         }
-      }
 
-      owner {
-        id = join("", data.aws_canonical_user_id.default.*.id)
+        dynamic "action" {
+          for_each = try(length(local.acl_grants), 0) == 0 || try(length(var.acl), 0) > 0 ? [] : [1]
+
+          content {
+            action = "s3:*"
+            resource = join("", aws_s3_bucket.default.*.arn)
+          }
+        }
       }
     }
   }
 }
+
+
 ########################################################################################
 
 
