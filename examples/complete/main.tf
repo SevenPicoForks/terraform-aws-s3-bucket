@@ -13,7 +13,7 @@ module "s3_bucket" {
   acl                           = var.acl
   force_destroy                 = var.force_destroy
   grants                        = var.grants
-  lifecycle_rules               = var.lifecycle_rules
+  #lifecycle_rules               = var.lifecycle_rules
   lifecycle_configuration_rules = var.lifecycle_configuration_rules
   versioning_enabled            = var.versioning_enabled
   allow_encrypted_uploads_only  = var.allow_encrypted_uploads_only
