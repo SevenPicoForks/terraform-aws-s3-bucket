@@ -339,9 +339,3 @@ variable "enable_mfa_delete" {
   default     = false
   description = "Set this to true to enable MFA on bucket. You must also set `versioning_enabled` to `true`."
 }
-
-variable "abort_incomplete_multipart_upload_days" {
-  type    = number
-  default = 7
-  description = "Configure a bucket lifecycle configuration to delete incomplete multipart uploads"
-}

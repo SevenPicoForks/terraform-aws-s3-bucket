@@ -4,7 +4,7 @@ locals {
     enabled = true # bool
     id      = null # string, must be specified and unique
 
-    abort_incomplete_multipart_upload_days = var.abort_incomplete_multipart_upload_days # number
+    abort_incomplete_multipart_upload_days = null # number
     filter_prefix_only                     = null # string See https://github.com/hashicorp/terraform-provider-aws/issues/23882
     filter_and = {
       object_size_greater_than = null # integer >= 0
