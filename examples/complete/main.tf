@@ -9,10 +9,10 @@ provider "awsutils" {
 module "s3_bucket" {
   source = "../../"
 
-  user_enabled                  = var.user_enabled
-  acl                           = var.acl
-  force_destroy                 = var.force_destroy
-  grants                        = var.grants
+  user_enabled  = var.user_enabled
+  acl           = var.acl
+  force_destroy = var.force_destroy
+  grants        = var.grants
   #lifecycle_rules               = var.lifecycle_rules
   lifecycle_configuration_rules = var.lifecycle_configuration_rules
   versioning_enabled            = var.versioning_enabled
