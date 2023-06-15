@@ -13,6 +13,7 @@ module "kms_key_context" {
 # KMS Key Policy
 # ------------------------------------------------------------------------------
 data "aws_iam_policy_document" "kms_key" {
+  #checkov:skip=CKV_AWS_356:skipping 'Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions'
   count                   = module.kms_key_context.enabled ? 1 : 0
   source_policy_documents = var.kms_key_source_policy_documents
 

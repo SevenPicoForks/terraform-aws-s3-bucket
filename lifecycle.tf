@@ -90,6 +90,7 @@ locals {
 
 
 resource "aws_s3_bucket_lifecycle_configuration" "default" {
+  #checkov:skip=CKV_AWS_300:skipping 'Ensure S3 lifecycle configuration sets period for aborting failed uploads' because it can be configured through 'var.lifecycle_configuration_rules'
   count  = local.enabled && length(local.lc_rules) > 0 ? 1 : 0
   bucket = join("", aws_s3_bucket.default.*.id)
 
