@@ -30,10 +30,10 @@ module "tfstate_storage" {
   source  = "../../"
   context = module.tfstate_storage_context.self
 
-  acl                               = "private"
-  allow_encrypted_uploads_only      = false
-  allow_ssl_requests_only           = true
-  allowed_bucket_actions            = [
+  acl                          = "private"
+  allow_encrypted_uploads_only = false
+  allow_ssl_requests_only      = true
+  allowed_bucket_actions = [
     "s3:PutObject",
     "s3:PutObjectAcl",
     "s3:GetObject",
@@ -54,7 +54,7 @@ module "tfstate_storage" {
   ignore_public_acls            = true
   kms_master_key_arn            = module.kms_key.key_arn
   lifecycle_configuration_rules = var.lifecycle_configuration_rules
-  logging                       = var.access_log_bucket_name != null && var.access_log_bucket_name != "" ? {
+  logging = var.access_log_bucket_name != null && var.access_log_bucket_name != "" ? {
     bucket_name = var.access_log_bucket_name
     prefix      = var.access_log_bucket_prefix_override == null ? "${join("", data.aws_caller_identity.current[*].account_id)}/${module.context.id}/" : (var.access_log_bucket_prefix_override != "" ? "${var.access_log_bucket_prefix_override}/" : "")
   } : null
@@ -67,7 +67,7 @@ module "tfstate_storage" {
   s3_replication_enabled       = var.s3_replication_enabled
   s3_replication_rules         = var.s3_replication_rules
   s3_replication_source_roles  = var.s3_replication_source_roles
-  source_policy_documents      = concat([
+  source_policy_documents = concat([
     one(data.aws_iam_policy_document.tfstate_storage[*].json)
   ], var.s3_source_policy_documents)
   sse_algorithm                 = module.kms_key.alias_arn == "" ? "AES256" : "aws:kms"

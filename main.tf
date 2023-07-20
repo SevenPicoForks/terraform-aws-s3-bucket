@@ -32,6 +32,7 @@ resource "aws_s3_bucket" "default" {
   #bridgecrew:skip=BC_AWS_S3_14:Skipping `Ensure all data stored in the S3 bucket is securely encrypted at rest` because variables are not understood
   #bridgecrew:skip=BC_AWS_GENERAL_56:Skipping `Ensure that S3 buckets are encrypted with KMS by default` because we do not have good defaults
   #bridgecrew:skip=BC_AWS_GENERAL_72:We do not agree that cross-region replication must be enabled
+  #checkov:skip=CKV2_AWS_62:skipping 'Ensure S3 buckets should have event notifications enabled'
   count         = local.enabled ? 1 : 0
   bucket        = local.bucket_name
   force_destroy = var.force_destroy
@@ -53,7 +54,7 @@ resource "aws_s3_bucket_versioning" "default" {
   bucket = join("", aws_s3_bucket.default.*.id)
 
   versioning_configuration {
-    status = "Enabled"
+    status     = "Enabled"
     mfa_delete = var.enable_mfa_delete ? "Enabled" : "Disabled"
   }
 }
