@@ -147,8 +147,9 @@ resource "aws_s3_bucket_cors_configuration" "default" {
 }
 
 resource "aws_s3_bucket_acl" "default" {
-  count  = local.enabled && var.s3_object_ownership != "BucketOwnerEnforced" ? 1 : 0
-  bucket = join("", aws_s3_bucket.default.*.id)
+  count      = local.enabled ? 1 : 0
+  bucket     = join("", aws_s3_bucket.default.*.id)
+  depends_on = [aws_s3_bucket_ownership_controls.default]
 
   # Conflicts with access_control_policy so this is enabled if no grants
   acl = try(length(local.acl_grants), 0) == 0 ? var.acl : null
@@ -472,13 +473,17 @@ resource "aws_s3_bucket_ownership_controls" "default" {
   rule {
     object_ownership = var.s3_object_ownership
   }
-  depends_on = [time_sleep.wait_for_aws_s3_bucket_settings]
+  depends_on = [
+    aws_s3_bucket.default,
+    aws_s3_bucket_public_access_block.default,
+    aws_s3_bucket_policy.default
+  ]
 }
 
-# Workaround S3 eventual consistency for settings objects
-resource "time_sleep" "wait_for_aws_s3_bucket_settings" {
-  count            = local.enabled ? 1 : 0
-  depends_on       = [aws_s3_bucket_public_access_block.default, aws_s3_bucket_policy.default]
-  create_duration  = "${var.wait_time_seconds}s"
-  destroy_duration = "${var.wait_time_seconds}s"
-}
+## Workaround S3 eventual consistency for settings objects
+#resource "time_sleep" "wait_for_aws_s3_bucket_settings" {
+#  count            = local.enabled ? 1 : 0
+#  depends_on       = [aws_s3_bucket_public_access_block.default, aws_s3_bucket_policy.default]
+#  create_duration  = "${var.wait_time_seconds}s"
+#  destroy_duration = "${var.wait_time_seconds}s"
+#}
