@@ -1,11 +1,10 @@
-
 <!-- markdownlint-disable -->
-# terraform-aws-s3-bucket [![GitHub Action Tests](https://github.com/cloudposse/terraform-aws-s3-bucket/workflows/test/badge.svg?branch=master)](https://github.com/cloudposse/terraform-aws-s3-bucket/actions) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-s3-bucket.svg)](https://github.com/cloudposse/terraform-aws-s3-bucket/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+# terraform-aws-s3-bucket [![GitHub Action Tests](https://github.com/sevenpicocomponents/terraform-aws-s3-bucket/workflows/test/badge.svg?branch=master)](https://github.com/sevenpicocomponents/terraform-aws-s3-bucket/actions) [![Latest Release](https://img.shields.io/github/release/sevenpicocomponents/terraform-aws-s3-bucket.svg)](https://github.com/sevenpicocomponents/terraform-aws-s3-bucket/releases/latest)
 <!-- markdownlint-restore -->
 
 [![README Header][readme_header_img]][readme_header_link]
 
-[![Cloud Posse][logo]](https://cpco.io/homepage)
+[![SevenPico][logo]](https://sevenpico.com/homepage)
 
 <!--
 
@@ -45,18 +44,9 @@ for more details.
 
 ---
 
-This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
-[<img align="right" title="Share via Email" src="https://docs.cloudposse.com/images/ionicons/ios-email-outline-2.0.1-16x16-999999.svg"/>][share_email]
-[<img align="right" title="Share on Google+" src="https://docs.cloudposse.com/images/ionicons/social-googleplus-outline-2.0.1-16x16-999999.svg" />][share_googleplus]
-[<img align="right" title="Share on Facebook" src="https://docs.cloudposse.com/images/ionicons/social-facebook-outline-2.0.1-16x16-999999.svg" />][share_facebook]
-[<img align="right" title="Share on Reddit" src="https://docs.cloudposse.com/images/ionicons/social-reddit-outline-2.0.1-16x16-999999.svg" />][share_reddit]
-[<img align="right" title="Share on LinkedIn" src="https://docs.cloudposse.com/images/ionicons/social-linkedin-outline-2.0.1-16x16-999999.svg" />][share_linkedin]
-[<img align="right" title="Share on Twitter" src="https://docs.cloudposse.com/images/ionicons/social-twitter-outline-2.0.1-16x16-999999.svg" />][share_twitter]
+This project is part of our comprehensive approach towards DevOps.
 
-
-[![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
-
-
+[![Terraform Open Source Modules](https://docs.sevenpico.com/images/terraform-open-source-modules.svg)][terraform_modules]
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
@@ -380,7 +370,7 @@ Available targets:
 
 ## Share the Love
 
-Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/terraform-aws-s3-bucket)! (it helps us **a lot**)
+Like this project? Please give it a ★ on [our GitHub](https://github.com/sevenpicocomponents/terraform-aws-s3-bucket)! (it helps us **a lot**)
 
 Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
 
@@ -401,7 +391,7 @@ Check out these related projects.
 
 **Got a question?** We got answers.
 
-File a GitHub [issue](https://github.com/cloudposse/terraform-aws-s3-bucket/issues), send us an [email][email] or join our [Slack Community][slack].
+File a GitHub [issue](https://github.com/sevenpicocomponents/terraform-aws-s3-bucket/issues), send us an [email][email] or join our [Slack Community][slack].
 
 [![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 
@@ -449,7 +439,7 @@ Sign up for [our newsletter][newsletter] that covers everything on our technolog
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-s3-bucket/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/sevenpicocomponents/terraform-aws-s3-bucket/issues) to report any bugs or file feature requests.
 
 ### Developing
 
@@ -468,7 +458,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## Copyright
 
-Copyright © 2017-2022 [Cloud Posse, LLC](https://cpco.io/copyright)
+Copyright © 2023 SevenPico, Inc.
 
 
 
@@ -511,9 +501,9 @@ All other trademarks referenced herein are the property of their respective owne
 
 ## About
 
-This project is maintained and funded by [Cloud Posse, LLC][website]. Like it? Please let us know by [leaving a testimonial][testimonial]!
+This project is maintained and funded by [SevenPico, Inc.][website]. Like it? Please let us know by [leaving a testimonial][testimonial]!
 
-[![Cloud Posse][logo]][website]
+[![SevenPico][logo]][website]
 
 We're a [DevOps Professional Services][hire] company based in Los Angeles, CA. We ❤️  [Open Source Software][we_love_open_source].
 
@@ -544,33 +534,33 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
 
-  [logo]: https://cloudposse.com/logo-300x69.svg
-  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=docs
-  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=website
-  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=github
-  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=jobs
-  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=hire
-  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=slack
-  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=linkedin
-  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=twitter
-  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=testimonial
-  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=office_hours
-  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=newsletter
-  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=discourse
-  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=email
-  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=commercial_support
-  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=we_love_open_source
-  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=terraform_modules
-  [readme_header_img]: https://cloudposse.com/readme/header/img
-  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=readme_header_link
-  [readme_footer_img]: https://cloudposse.com/readme/footer/img
-  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=readme_footer_link
+  [logo]: https://sevenpico.com/logo-300x69.svg
+  [docs]: https://sevenpico.com/docs?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=docs
+  [website]: https://sevenpico.com/homepage?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=website
+  [github]: https://sevenpico.com/github?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=github
+  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=jobs
+  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=hire
+  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=slack
+  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=linkedin
+  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=twitter
+  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=testimonial
+  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=office_hours
+  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=newsletter
+  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=discourse
+  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=email
+  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=commercial_support
+  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=we_love_open_source
+  [terraform_modules]: https://sevenpico.com/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=terraform_modules
+  [readme_header_img]: https://sevenpico.com/readme/header/img
+  [readme_header_link]: https://sevenpico.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=readme_header_link
+  [readme_footer_img]: https://sevenpico.com/readme/footer/img
+  [readme_footer_link]: https://sevenpico.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=readme_footer_link
   [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
-  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-s3-bucket&utm_content=readme_commercial_support_link
-  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-s3-bucket&url=https://github.com/cloudposse/terraform-aws-s3-bucket
-  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-s3-bucket&url=https://github.com/cloudposse/terraform-aws-s3-bucket
-  [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudposse/terraform-aws-s3-bucket
-  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudposse/terraform-aws-s3-bucket
-  [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/terraform-aws-s3-bucket
-  [share_email]: mailto:?subject=terraform-aws-s3-bucket&body=https://github.com/cloudposse/terraform-aws-s3-bucket
-  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/terraform-aws-s3-bucket?pixel&cs=github&cm=readme&an=terraform-aws-s3-bucket
+  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=sevenpicocomponents/terraform-aws-s3-bucket&utm_content=readme_commercial_support_link
+  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-s3-bucket&url=https://github.com/sevenpicocomponents/terraform-aws-s3-bucket
+  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-s3-bucket&url=https://github.com/sevenpicocomponents/terraform-aws-s3-bucket
+  [share_reddit]: https://reddit.com/submit/?url=https://github.com/sevenpicocomponents/terraform-aws-s3-bucket
+  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/sevenpicocomponents/terraform-aws-s3-bucket
+  [share_googleplus]: https://plus.google.com/share?url=https://github.com/sevenpicocomponents/terraform-aws-s3-bucket
+  [share_email]: mailto:?subject=terraform-aws-s3-bucket&body=https://github.com/sevenpicocomponents/terraform-aws-s3-bucket
+  [beacon]: https://ga-beacon.sevenpico.com/UA-76589703-4/sevenpicocomponents/terraform-aws-s3-bucket?pixel&cs=github&cm=readme&an=terraform-aws-s3-bucket
