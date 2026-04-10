@@ -48,6 +48,7 @@ module "tfstate_storage" {
   bucket_key_enabled            = false
   bucket_name                   = local.bucket_name
   cors_rule_inputs              = null
+  create_bucket_policy          = var.create_bucket_policy
   enable_mfa_delete             = var.enable_mfa_delete
   force_destroy                 = var.force_destroy
   grants                        = []
