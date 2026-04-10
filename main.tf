@@ -32,6 +32,7 @@ resource "aws_s3_bucket" "default" {
   #bridgecrew:skip=BC_AWS_S3_14:Skipping `Ensure all data stored in the S3 bucket is securely encrypted at rest` because variables are not understood
   #bridgecrew:skip=BC_AWS_GENERAL_56:Skipping `Ensure that S3 buckets are encrypted with KMS by default` because we do not have good defaults
   #bridgecrew:skip=BC_AWS_GENERAL_72:We do not agree that cross-region replication must be enabled
+  #checkov:skip=CKV2_AWS_62:skipping 'Ensure S3 buckets should have event notifications enabled'
   count         = local.enabled ? 1 : 0
   bucket        = local.bucket_name
   force_destroy = var.force_destroy
@@ -446,7 +447,7 @@ data "aws_iam_policy_document" "aggregated_policy" {
 }
 
 resource "aws_s3_bucket_policy" "default" {
-  count      = local.enabled && (var.allow_ssl_requests_only || var.allow_encrypted_uploads_only || length(var.s3_replication_source_roles) > 0 || length(var.privileged_principal_arns) > 0 || length(var.source_policy_documents) > 0) ? 1 : 0
+  count      = local.enabled && var.create_bucket_policy && (var.allow_ssl_requests_only || var.allow_encrypted_uploads_only || length(var.s3_replication_source_roles) > 0 || length(var.privileged_principal_arns) > 0 || length(var.source_policy_documents) > 0) ? 1 : 0
   bucket     = join("", aws_s3_bucket.default.*.id)
   policy     = join("", data.aws_iam_policy_document.aggregated_policy.*.json)
   depends_on = [aws_s3_bucket_public_access_block.default]

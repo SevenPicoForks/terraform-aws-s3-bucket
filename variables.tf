@@ -95,6 +95,19 @@ variable "allow_ssl_requests_only" {
   description = "Set to `true` to require requests to use Secure Socket Layer (HTTPS/SSL). This will explicitly deny access to HTTP requests"
 }
 
+variable "create_bucket_policy" {
+  type        = bool
+  default     = true
+  description = <<-EOT
+    Set to `false` to prevent this module from creating an `aws_s3_bucket_policy` resource.
+    Use this when an external Terraform resource (in a separate state file) is the sole owner
+    of the bucket policy, to avoid last-writer-wins conflicts between state files.
+    When `false`, the `allow_ssl_requests_only`, `allow_encrypted_uploads_only`, and
+    `s3_replication_source_roles` flags still control what policy *would* be generated, but
+    no `aws_s3_bucket_policy` resource is created or managed by this module.
+    EOT
+}
+
 /*
 Schema for lifecycle_configuration_rules
 {
