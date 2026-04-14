@@ -81,7 +81,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "default" {
   bucket = join("", aws_s3_bucket.default.*.id)
 
   rule {
-    bucket_key_enabled = var.bucket_key_enabled
+    bucket_key_enabled       = var.bucket_key_enabled
+    blocked_encryption_types = var.blocked_encryption_types
 
     apply_server_side_encryption_by_default {
       sse_algorithm     = var.sse_algorithm
@@ -147,7 +148,7 @@ resource "aws_s3_bucket_cors_configuration" "default" {
 }
 
 resource "aws_s3_bucket_acl" "default" {
-  count      = local.enabled && var.s3_object_ownership != "BucketOwnerEnforced" ? 1 : 0
+  count = local.enabled && var.s3_object_ownership != "BucketOwnerEnforced" ? 1 : 0
 
   bucket     = join("", aws_s3_bucket.default.*.id)
   depends_on = [aws_s3_bucket_ownership_controls.default]
@@ -447,7 +448,7 @@ data "aws_iam_policy_document" "aggregated_policy" {
 }
 
 resource "aws_s3_bucket_policy" "default" {
-  count      = local.enabled && var.create_bucket_policy && (var.allow_ssl_requests_only || var.allow_encrypted_uploads_only || length(var.s3_replication_source_roles) > 0 || length(var.privileged_principal_arns) > 0 || length(var.source_policy_documents) > 0) ? 1 : 0
+  count      = local.enabled && (var.allow_ssl_requests_only || var.allow_encrypted_uploads_only || length(var.s3_replication_source_roles) > 0 || length(var.privileged_principal_arns) > 0 || length(var.source_policy_documents) > 0) ? 1 : 0
   bucket     = join("", aws_s3_bucket.default.*.id)
   policy     = join("", data.aws_iam_policy_document.aggregated_policy.*.json)
   depends_on = [aws_s3_bucket_public_access_block.default]
