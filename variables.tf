@@ -62,7 +62,7 @@ variable "logging" {
 variable "sse_algorithm" {
   type        = string
   default     = "AES256"
-  description = "The server-side encryption algorithm to use. Valid values are `AES256` and `aws:kms`"
+  description = "The server-side encryption algorithm to use. Valid values are `AES256`, `aws:kms`, and `aws:kms:dsse`"
 }
 
 variable "kms_master_key_arn" {
@@ -340,6 +340,20 @@ variable "bucket_key_enabled" {
 
   For more information, see: https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html
   EOT
+}
+
+variable "blocked_encryption_types" {
+  type        = list(string)
+  default     = null
+  description = <<-EOT
+    List of server-side encryption types to block for object uploads.
+    Valid values are `SSE-C` (blocks uploads using server-side encryption with customer-provided keys)
+    and `NONE` (unblocks all encryption types).
+    Starting in April 2026, Amazon S3 automatically blocks SSE-C uploads for all new buckets, which
+    causes Terraform drift if this is left unmanaged. Set to `["SSE-C"]` to explicitly manage this
+    behavior and eliminate plan-time drift on new buckets.
+    See: https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-s3-c-encryption-setting-faq.html
+    EOT
 }
 
 variable "wait_time_seconds" {
