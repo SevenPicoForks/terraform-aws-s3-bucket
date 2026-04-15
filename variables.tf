@@ -344,7 +344,7 @@ variable "bucket_key_enabled" {
 
 variable "blocked_encryption_types" {
   type        = list(string)
-  default     = null
+  default     = ["NONE"]
   description = <<-EOT
     List of server-side encryption types to block for object uploads.
     Valid values are `SSE-C` (blocks uploads using server-side encryption with customer-provided keys)
